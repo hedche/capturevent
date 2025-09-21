@@ -11,7 +11,6 @@
 # --- Step 1: Screenshot full screen (avoid Arc window bug) ---
 # Ask user to select an area
 screenshot_path="$HOME/Downloads/selected_area.png"
-screenshot_path="$HOME/Downloads/test.png"
 clean_path="$HOME/Downloads/selected_area_clean.png"
 
 # Open interactive selection (crosshair selection, just like Shift+Cmd+4)
@@ -40,8 +39,8 @@ start=$(echo "$event_json" | jq -r '.start')
 end=$(echo "$event_json" | jq -r '.end')
 
 # --- Step 5: Convert ISO -> AppleScript date format ---
-start_as=$(date -j -f "%Y-%m-%dT%H:%M:%S" "${start:0:19}" "+%a %b %d %T %Y")
-end_as=$(date -j -f "%Y-%m-%dT%H:%M:%S" "${end:0:19}" "+%a %b %d %T %Y")
+start_as=$(date -j -f "%Y-%m-%dT%H:%M:%S" "${start:0:19}" "+%d %b %Y %H:%M:%S")
+end_as=$(date -j -f "%Y-%m-%dT%H:%M:%S" "${end:0:19}" "+%d %b %Y %H:%M:%S")
 
 # --- Step 6: Create Calendar event (use first calendar if unsure) ---
 osascript <<EOF
